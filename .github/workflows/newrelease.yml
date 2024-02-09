@@ -1,0 +1,24 @@
+name: Release Candidate Workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: self-hosted
+      
+    env:
+      API_IMAGE_NAME: imaging2.0-api
+      USER_GROUP_ID: 1024
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create Release Tag
+        id: tag
+        run: |
+          git pull --tags
+          VERSION=`/bin/bash tag.sh -m staging`
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo $VERSION
