@@ -8,10 +8,7 @@ on:
 jobs:
   test:
     runs-on: self-hosted
-      
-    env:
-      API_IMAGE_NAME: imaging2.0-api
-      USER_GROUP_ID: 1024
+  
     steps:
       - uses: actions/checkout@v3
 
